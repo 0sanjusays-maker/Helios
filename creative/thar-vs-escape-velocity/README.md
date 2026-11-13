@@ -7,10 +7,12 @@ bills him for the full escape velocity. Production pack.
 
 | File | What it is |
 | --- | --- |
+| `Thar_vs_Escape_Velocity_Animatic.mp4` | **The cut**: 60s, 1600x900, 30fps, VO + full sound design, burned-in subtitles |
 | `Thar_vs_Escape_Velocity_Production_Script.pdf` | Print/review version of the full script (9 pages) |
 | `Thar_vs_Escape_Velocity_Production_Script.docx` | Same doc, editable |
-| `storyboard/web/*.jpg` | 10 rendered storyboard frames (shots 1–5 + the drift beat) |
-| `storyboard/*.png` | Full-resolution masters of the same frames |
+| `storyboard/web/*.jpg` | 12 rendered storyboard frames (all shots, web res) |
+| `storyboard/*.png` | Full-resolution masters (git-ignored, on disk) |
+| `build_video.py` | Rebuilds the animatic: ken-burns, punch-ins, speed lines, subtitles, synth SFX, mux |
 | `audio/*.mp3` | 6 Hindi VO lines — Jira (hyper, young) and Bhagwan (booming, divine) |
 
 Google Doc: **Thar vs Escape Velocity — Production Script (v2)**
@@ -49,5 +51,13 @@ python3 build_doc.py   # -> .docx
 python3 build_pdf.py   # -> .pdf
 ```
 
-Frames 6A (giant crimson hand) and 6B (fade into the void) are still unrendered —
-their prompts are in the script and the layout shows them as placeholders.
+```
+python3 build_video.py   # -> .mp4  (needs numpy, pillow, imageio-ffmpeg)
+```
+
+Subtitles are burnt in Latin script (Hinglish) because the sandbox Pillow build has no
+HarfBuzz/raqm shaping, so Devanagari conjuncts would render broken. Swap in a re-shaped
+Devanagari SRT in any editor if you want the Hindi script on screen.
+
+Sound design is synthesised in `build_video.py` — the 0:28–0:30 silence is intentional
+and is the only true digital silence in the mix.

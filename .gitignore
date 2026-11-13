@@ -44,3 +44,6 @@ demo_data
 # Creative project deliverables (see creative/thar-vs-escape-velocity/)
 !creative/**/*.pdf
 creative/**/storyboard/*.png
+
+# large generated media (rebuild with build_video.py) — kept out of git
+creative/**/*.mp4
